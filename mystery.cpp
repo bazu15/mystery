@@ -26,6 +26,50 @@ void mystery1(auto& Data)
 }
 
 //... Other mysteries...
+void mystery2(auto& Data) 
+{
+	int i, j, minIndex, tmp;
+	cout<<endl<<"Mystery 2"<<endl<<"---------------------"<<endl;
+	for (i = 0; i < Data.size() -1; i++) 
+	{
+		minIndex = i;
+	//find smallest in unsorted part
+	for (j = i + 1; j < Data.size(); j++)
+	{
+		if (Data[j] < Data[minIndex])
+			minIndex = j;
+	}
+	if (minIndex != i) 
+	{
+		tmp = Data[i];
+		Data[i] = Data[minIndex];
+		Data[minIndex] = tmp;
+	} //end if
+	print(Data);
+	} //end outer loop
+} //end function
+void mystery3(auto&Data)
+{
+	int nextIndex, moveitem, insertVal;
+	cout<<endl<<"Mystery 3"<<endl<<"---------------------"<<endl;
+	//loop through elements of vector
+	for (nextIndex = 1; nextIndex < Data.size(); nextIndex ++)
+ 	{
+		insertVal = Data[nextIndex]; //store valueof current element
+		moveitem = nextIndex; //initialize location to place element
+		
+		//search for location to place currentelement
+		while (moveitem >0 && Data[moveitem -1] > insertVal) 
+		{
+			//shift elements one slot to right
+			Data[moveitem ] = Data[moveitem -1];moveitem--;
+		
+		} //end while
+		Data[moveitem] = insertVal;
+	
+	print(Data);
+	} //end for
+}
 
 int main()
 {
